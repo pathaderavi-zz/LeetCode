@@ -12,15 +12,27 @@ public class Solution {
     
    
         public static int hammingDistance(int x, int y) {
-           int d = x^y;
-            int dist = 0;
-            while(d>=1){
-                if(d%2==1){
-                    dist = dist +1;
-                }
-                d = d/2;
+        int a = Math.max(x, y);
+        int b = Math.min(x, y);
+        
+        String xB = Integer.toBinaryString(a);
+        String yB = Integer.toBinaryString(b);
+        
+        String d = "";
+        for(int i = 0 ; i< (xB.length()-yB.length());i++){
+            
+            d = d+"0";
+        }
+        yB = d+yB;
+        int distance=0;
+        for(int i = 0;i<xB.length();i++){
+            if(!(xB.charAt(i)==(yB.charAt(i)))){
+                distance = distance +1;
             }
-            return dist;
+        }
+        
+        System.out.println(xB+" "+yB);
+  return distance;      
             
     }
 }
